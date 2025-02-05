@@ -73,6 +73,24 @@ export const seed = async ({
     depth: 0,
     where: {
       email: {
+        equals: 'avisekdas@example.com',
+      },
+    },
+  })
+  await payload.delete({
+    collection: 'users',
+    depth: 0,
+    where: {
+      email: {
+        equals: 'johndoe@example.com',
+      },
+    },
+  })
+  await payload.delete({
+    collection: 'users',
+    depth: 0,
+    where: {
+      email: {
         equals: 'demo-author@example.com',
       },
     },
@@ -108,10 +126,31 @@ export const seed = async ({
     payload.create({
       collection: 'users',
       data: {
+        name: 'Avisek Das',
+        email: 'avisekdas@example.com',
+        username: 'avisek',
+        password: 'qpwo1029',
+        roles: ['admin'],
+      },
+    }),
+    payload.create({
+      collection: 'users',
+      data: {
+        name: 'John Doe',
+        email: 'johndoe@example.com',
+        username: 'john',
+        password: 'qpwo1029',
+        roles: ['editor'],
+      },
+    }),
+    payload.create({
+      collection: 'users',
+      data: {
         name: 'Demo Author',
         email: 'demo-author@example.com',
         username: 'demo-author',
         password: 'password',
+        roles: ['editor'],
       },
     }),
     payload.create({
