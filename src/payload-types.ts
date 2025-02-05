@@ -323,6 +323,7 @@ export interface User {
    * If this is unchecked, public blogs will be hidden
    */
   isActive?: boolean | null;
+  roles: ('admin' | 'editor')[];
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -1216,6 +1217,7 @@ export interface UsersSelect<T extends boolean = true> {
   username?: T;
   name?: T;
   isActive?: T;
+  roles?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

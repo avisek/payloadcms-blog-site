@@ -37,6 +37,24 @@ export const Users: CollectionConfig = {
         description: 'If this is unchecked, public blogs will be hidden',
       },
     },
+    {
+      name: 'roles',
+      saveToJWT: true,
+      type: 'select',
+      hasMany: true,
+      options: [
+        {
+          label: 'Admin',
+          value: 'admin',
+        },
+        {
+          label: 'Editor',
+          value: 'editor',
+        },
+      ],
+      defaultValue: ['editor'],
+      required: true,
+    },
   ],
   timestamps: true,
 }
