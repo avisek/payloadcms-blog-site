@@ -319,6 +319,10 @@ export interface User {
   id: number;
   username: string;
   name?: string | null;
+  /**
+   * If this is unchecked, public blogs will be hidden
+   */
+  isActive?: boolean | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -1211,6 +1215,7 @@ export interface CategoriesSelect<T extends boolean = true> {
 export interface UsersSelect<T extends boolean = true> {
   username?: T;
   name?: T;
+  isActive?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

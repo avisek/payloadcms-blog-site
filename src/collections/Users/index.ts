@@ -27,6 +27,15 @@ export const Users: CollectionConfig = {
       name: 'name',
       type: 'text',
     },
+    {
+      name: 'isActive',
+      type: 'checkbox',
+      label: 'Active Account',
+      defaultValue: true,
+      admin: {
+        description: 'If this is unchecked, public blogs will be hidden',
+      },
+    },
   ],
   timestamps: true,
 }
