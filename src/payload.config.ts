@@ -92,11 +92,11 @@ export default buildConfig({
     },
     tasks: [],
   },
+
   onInit: async (payload) => {
     // If the `env` var `PAYLOAD_SEED` is set, seed the db
     if (process.env.PAYLOAD_SEED) {
       const payloadReq = await createLocalReq({}, payload)
-
       await seed({ payload, req: payloadReq })
     }
   },
