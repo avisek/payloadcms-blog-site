@@ -15,8 +15,10 @@ export const revalidatePost: CollectionAfterChangeHook<Post> = ({
 
       payload.logger.info(`Revalidating post at path: ${path}`)
 
-      revalidatePath(path)
-      revalidateTag('posts-sitemap')
+      try {
+        revalidatePath(path)
+        revalidateTag('posts-sitemap')
+      } catch {}
     }
 
     // If the post was previously published, we need to revalidate the old path
