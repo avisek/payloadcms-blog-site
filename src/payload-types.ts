@@ -318,7 +318,7 @@ export interface Category {
 export interface User {
   id: number;
   username: string;
-  name?: string | null;
+  name: string;
   /**
    * If this is unchecked, public blogs will be hidden
    */
