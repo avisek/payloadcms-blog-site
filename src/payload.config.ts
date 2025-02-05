@@ -3,7 +3,7 @@ import { sqliteAdapter } from '@payloadcms/db-sqlite'
 
 import sharp from 'sharp' // sharp-import
 import path from 'path'
-import { buildConfig, PayloadRequest } from 'payload'
+import { buildConfig, createLocalReq, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 
 import { Categories } from './collections/Categories'
@@ -16,6 +16,7 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
+import { seed } from './endpoints/seed'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -90,5 +91,13 @@ export default buildConfig({
       },
     },
     tasks: [],
+  },
+  onInit: async (payload) => {
+    // If the `env` var `PAYLOAD_SEED` is set, seed the db
+    if (process.env.PAYLOAD_SEED) {
+      const payloadReq = await createLocalReq({}, payload)
+
+      await seed({ payload, req: payloadReq })
+    }
   },
 })
