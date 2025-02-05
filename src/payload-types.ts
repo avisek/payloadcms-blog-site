@@ -184,6 +184,7 @@ export interface Post {
     image?: (number | null) | Media;
     description?: string | null;
   };
+  visibility?: ('public' | 'private') | null;
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
   populatedAuthors?:
@@ -1082,6 +1083,7 @@ export interface PostsSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
+  visibility?: T;
   publishedAt?: T;
   authors?: T;
   populatedAuthors?:
